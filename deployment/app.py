@@ -13,7 +13,7 @@ This application predicts the likelihood of a machine failing based on its opera
 Enter the sensor and configuration data below to get a prediction.
 """)
 
-Type         = st.selectbox("Machine Type", ["H", "L", "M"])
+machine_type         = st.selectbox("Machine Type", ["H", "L", "M"])
 air_temp     = st.number_input("Air Temperature (K)", 250.0, 400.0, 298.0, 0.1)
 process_temp = st.number_input("Process Temperature (K)", 250.0, 500.0, 324.0, 0.1)
 rot_speed    = st.number_input("Rotational Speed (RPM)", 0, 3000, 1400)
@@ -26,7 +26,7 @@ input_data = pd.DataFrame([{
     "Rotational speed": rot_speed,
     "Torque": torque,
     "Tool wear": tool_wear,
-    "Type": Type,
+    "Type": machine_type,
 }])
 
 if st.button("Predict Failure"):
